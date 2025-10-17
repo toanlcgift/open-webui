@@ -4,6 +4,7 @@
 
 	import Chat from '$lib/components/chat/Chat.svelte';
 	import { page } from '$app/stores';
+	import PhonePreview from '$lib/components/chat/PhonePreview.svelte';
 
 	onMount(() => {
 		if ($page.url.searchParams.get('error')) {
@@ -13,3 +14,4 @@
 </script>
 
 <Chat />
+<PhonePreview />
