@@ -14,4 +14,3 @@
 </script>
 
 <Chat />
-<PhonePreview />

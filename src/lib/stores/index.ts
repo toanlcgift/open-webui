@@ -79,6 +79,7 @@ export const showEmbeds = writable(false);
 export const showOverview = writable(false);
 export const showArtifacts = writable(false);
 export const showCallOverlay = writable(false);
+export const showPreview = writable(true);
 
 export const embed = writable(null);
 export const artifactCode = writable(null);

@@ -12,6 +12,7 @@
 	import { get, type Unsubscriber, type Writable } from 'svelte/store';
 	import type { i18n as i18nType } from 'i18next';
 	import { WEBUI_BASE_URL } from '$lib/constants';
+	import JavascriptCodeEditor from '$lib/components/common/JavascriptCodeEditor.svelte';
 
 	import {
 		chatId,
@@ -22,6 +23,7 @@
 		tags as allTags,
 		settings,
 		showSidebar,
+		showPreview,
 		WEBUI_NAME,
 		banners,
 		user,
@@ -2538,6 +2540,10 @@
 						{/if}
 					</div>
 				</Pane>
+
+				{#if $showPreview}
+					<JavascriptCodeEditor lang="JavaScript" id="JavaScript"></JavascriptCodeEditor>
+				{/if}
 
 				<ChatControls
 					bind:this={controlPaneComponent}
