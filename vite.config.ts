@@ -22,9 +22,6 @@ export default defineConfig({
 	},
 	build: {
 		sourcemap: true,
-		rollupOptions: {
-			external: ['y-protocols/awareness'],
-		},
 	},
 	worker: {
 		format: 'es'
