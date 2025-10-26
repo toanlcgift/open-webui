@@ -229,4 +229,4 @@
 	});
 </script>
 
-<div id="code-textarea-{id}" class="h-full w-full text-sm pb-4" />
+<div id="code-textarea-{id}" class="h-[calc(100%-25px)] w-full text-sm pb-4" />
