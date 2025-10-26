@@ -94,7 +94,7 @@
 	import { getFunctions } from '$lib/apis/functions';
 	import Image from '../common/Image.svelte';
 	import { updateFolderById } from '$lib/apis/folders';
-
+	import SandboxPreview from '../common/SandboxPreview.svelte';
 	export let chatIdProp = '';
 
 	let loading = true;
@@ -2542,7 +2542,7 @@
 				</Pane>
 
 				{#if $showPreview}
-					<JavascriptCodeEditor lang="JavaScript" id="JavaScript"></JavascriptCodeEditor>
+					<SandboxPreview></SandboxPreview>
 				{/if}
 
 				<ChatControls
