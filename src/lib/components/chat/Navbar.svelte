@@ -14,7 +14,10 @@
 		showSidebar,
 		temporaryChatEnabled,
 		user,
-		showPreview
+		showPreview,
+
+		showPreviewCode
+
 	} from '$lib/stores';
 
 	import { slide } from 'svelte/transition';
@@ -226,6 +229,7 @@
 								class=" flex cursor-pointer px-2 py-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-850 transition"
 								on:click={async () => {
 									await showPreview.set(!$showPreview);
+									await showPreviewCode.set(true);
 								}}
 								aria-label="Preview"
 							>
