@@ -39,7 +39,8 @@
 	import ChatPlus from '../icons/ChatPlus.svelte';
 	import ChatCheck from '../icons/ChatCheck.svelte';
 	import Knobs from '../icons/Knobs.svelte';
-	import Eye from '../icons/Eye.svelte';
+	import OpenPreview from '../icons/OpenPreview.svelte';
+	import ClosePreview from '../icons/ClosePreview.svelte';
 
 	const i18n = getContext('i18n');
 
@@ -229,7 +230,11 @@
 								aria-label="Preview"
 							>
 								<div class=" m-auto self-center">
-									<Eye className=" size-5" strokeWidth="1" />
+									{#if !$showPreview}
+									<OpenPreview className=" size-5" strokeWidth="1" />
+									{:else}
+									<ClosePreview className=" size-5" strokeWidth="1" />
+									{/if}
 								</div>
 							</button>
 						</Tooltip>

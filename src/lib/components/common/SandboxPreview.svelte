@@ -6,14 +6,22 @@
 	import type { i18n as i18nType } from 'i18next';
 	import JavascriptCodeEditor from '$lib/components/common/JavascriptCodeEditor.svelte';
 
-	import { showSidebar, showPreview, user, mobile, showPreviewCode, showPreviewLive } from '$lib/stores';
+	import {
+		showSidebar,
+		showPreview,
+		user,
+		mobile,
+		showPreviewCode,
+		showPreviewLive
+	} from '$lib/stores';
 
 	import Tooltip from '../common/Tooltip.svelte';
 	import Sidebar from '../icons/Sidebar.svelte';
 	import PhonePreview from '../chat/PhonePreview.svelte';
+	import ClosePreview from '../icons/ClosePreview.svelte';
 </script>
 
-<div class="row h-full w-1/2 p-2">
+<div class="row h-full w-1/2 p-2 {$mobile ? 'w-full' : ''}">
 	<div
 		class="h-full p-2 bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-850"
 	>
@@ -34,6 +42,23 @@
 							>
 								<div class=" self-center p-1.5">
 									<Sidebar />
+								</div>
+							</button>
+						</Tooltip>
+
+						<Tooltip
+							content={$showPreview ? $i18n.t('Hide Preview') : $i18n.t('Open Preview')}
+							interactive={true}
+						>
+							<button
+								id="sidebar-toggle-button"
+								class=" cursor-pointer flex rounded-lg hover:bg-gray-100 dark:hover:bg-gray-850 transition cursor-"
+								on:click={() => {
+									showPreview.set(!$showPreview);
+								}}
+							>
+								<div class=" self-center p-1.5">
+									<ClosePreview />
 								</div>
 							</button>
 						</Tooltip>
@@ -80,10 +105,10 @@
 			</div>
 		</nav>
 		{#if $showPreviewCode}
-		<JavascriptCodeEditor lang="JavaScript" id="JavaScript"></JavascriptCodeEditor>
+			<JavascriptCodeEditor lang="JavaScript" id="JavaScript"></JavascriptCodeEditor>
 		{/if}
 		{#if $showPreviewLive}
-		<PhonePreview></PhonePreview>
+			<PhonePreview></PhonePreview>
 		{/if}
 	</div>
 </div>
