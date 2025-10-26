@@ -13,6 +13,8 @@
 	};
 </script>
 
-<div class="w-230 rounded-3xl p-4 flex items-center justify-center shadow-md">
-	<img src={imageSrc} alt="Live Stream" class="rounded-xl shadow-lg" />
+<div class="p-4 flex items-center justify-center">
+	{#if imageSrc !== ''}
+		<img src={imageSrc} alt="Live Stream" class="rounded-xl shadow-lg max-h-[86vh]" />
+	{/if}
 </div>

@@ -6,10 +6,11 @@
 	import type { i18n as i18nType } from 'i18next';
 	import JavascriptCodeEditor from '$lib/components/common/JavascriptCodeEditor.svelte';
 
-	import { showSidebar, showPreview, user, mobile } from '$lib/stores';
+	import { showSidebar, showPreview, user, mobile, showPreviewCode, showPreviewLive } from '$lib/stores';
 
 	import Tooltip from '../common/Tooltip.svelte';
 	import Sidebar from '../icons/Sidebar.svelte';
+	import PhonePreview from '../chat/PhonePreview.svelte';
 </script>
 
 <div class="row h-full w-1/2 p-2">
@@ -45,11 +46,12 @@
 					>
 						{#if $user?.role === 'admin' || $user?.permissions?.workspace?.models}
 							<a
-								class="min-w-fit p-1.5 {!$showPreview
+								class="min-w-fit p-1.5 {$showPreviewCode
 									? ''
 									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
 								on:click={() => {
-									console.log('ahihi');
+									showPreviewCode.set(true);
+									showPreviewLive.set(false);
 								}}
 								href=""
 							>
@@ -59,11 +61,12 @@
 
 						{#if $user?.role === 'admin' || $user?.permissions?.workspace?.models}
 							<a
-								class="min-w-fit p-1.5 {!$showPreview
+								class="min-w-fit p-1.5 {$showPreviewLive
 									? ''
 									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
 								on:click={() => {
-									console.log('ahihi');
+									showPreviewCode.set(false);
+									showPreviewLive.set(true);
 								}}
 								href=""
 							>
@@ -76,7 +79,11 @@
 				<!-- <div class="flex items-center text-xl font-semibold">{$i18n.t('Workspace')}</div> -->
 			</div>
 		</nav>
-
+		{#if $showPreviewCode}
 		<JavascriptCodeEditor lang="JavaScript" id="JavaScript"></JavascriptCodeEditor>
+		{/if}
+		{#if $showPreviewLive}
+		<PhonePreview></PhonePreview>
+		{/if}
 	</div>
 </div>

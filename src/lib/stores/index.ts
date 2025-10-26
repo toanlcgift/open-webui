@@ -81,6 +81,9 @@ export const showArtifacts = writable(false);
 export const showCallOverlay = writable(false);
 export const showPreview = writable(false);
 
+export const showPreviewCode = writable(false);
+export const showPreviewLive = writable(false);
+
 export const embed = writable(null);
 export const artifactCode = writable(null);
 
