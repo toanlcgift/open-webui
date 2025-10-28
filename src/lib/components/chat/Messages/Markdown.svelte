@@ -25,6 +25,7 @@
 	export let onUpdate = () => {};
 
 	export let onPreview = () => {};
+	export let onShowPreviewCode = () => {};
 
 	export let onSourceClick = () => {};
 	export let onTaskClick = () => {};
@@ -65,5 +66,6 @@
 		{onSave}
 		{onUpdate}
 		{onPreview}
+		{onShowPreviewCode}
 	/>
 {/key}

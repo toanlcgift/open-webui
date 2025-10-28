@@ -12,7 +12,8 @@
 		user,
 		mobile,
 		showPreviewCode,
-		showPreviewLive
+		showPreviewLive,
+		currentPreviewCode
 	} from '$lib/stores';
 
 	import Tooltip from '../common/Tooltip.svelte';
@@ -105,7 +106,7 @@
 			</div>
 		</nav>
 		{#if $showPreviewCode}
-			<JavascriptCodeEditor lang="JavaScript" id="JavaScript"></JavascriptCodeEditor>
+			<JavascriptCodeEditor lang="JavaScript" id="JavaScript" value='{$currentPreviewCode}'></JavascriptCodeEditor>
 		{/if}
 		{#if $showPreviewLive}
 			<PhonePreview></PhonePreview>

@@ -83,6 +83,7 @@ export const showPreview = writable(false);
 
 export const showPreviewCode = writable(false);
 export const showPreviewLive = writable(false);
+export const currentPreviewCode = writable('');
 
 export const embed = writable(null);
 export const artifactCode = writable(null);

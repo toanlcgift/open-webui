@@ -2,7 +2,7 @@
 	import hljs from 'highlight.js';
 	import { toast } from 'svelte-sonner';
 	import { getContext, onMount, tick, onDestroy } from 'svelte';
-	import { config } from '$lib/stores';
+	import { config, showPreview, showPreviewCode, currentPreviewCode } from '$lib/stores';
 
 	import PyodideWorker from '$lib/workers/pyodide.worker?worker';
 	import { executeCode } from '$lib/apis/utils';
@@ -26,6 +26,7 @@
 	export let onSave = (e) => {};
 	export let onUpdate = (e) => {};
 	export let onPreview = (e) => {};
+	export let onShowPreviewCode = (e) => {};
 
 	export let save = false;
 	export let run = true;
@@ -94,6 +95,12 @@
 
 	const previewCode = () => {
 		onPreview(code);
+	};
+
+	const showPreviewCodeBlock = () => {
+		onShowPreviewCode(code);
+		showPreview.set(true);
+		currentPreviewCode.set(code);
 	};
 
 	const checkPythonCode = (str) => {
@@ -487,6 +494,15 @@
 						class="copy-code-button bg-none border-none transition rounded-md px-1.5 py-0.5 bg-white dark:bg-black"
 						on:click={copyCode}>{copied ? $i18n.t('Copied') : $i18n.t('Copy')}</button
 					>
+
+					<button
+						class="flex gap-1 items-center run-code-button bg-none border-none transition rounded-md px-1.5 py-0.5 bg-white dark:bg-black"
+						on:click={showPreviewCodeBlock}
+					>
+						<div>
+							{$i18n.t('Hack')}
+						</div>
+					</button>
 
 					{#if preview && ['html', 'svg'].includes(lang)}
 						<button
