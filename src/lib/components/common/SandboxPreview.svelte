@@ -23,6 +23,31 @@
 	import Clip from '../icons/Clip.svelte';
 	import BookOpen from '../icons/BookOpen.svelte';
 	import Exploit from '../icons/Exploit.svelte';
+	import { OPENAI_API_V1_BASE_URL } from '$lib/constants';
+
+	const onExploit = async () => {
+		const res = await fetch(`${OPENAI_API_V1_BASE_URL}/v1/exploit`, {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				code: $currentPreviewCode
+			})
+		})
+			.then(async (res) => {
+				if (!res.ok) throw await res.json();
+				return res.json();
+			})
+			.catch((err) => {
+				console.log(err);
+				if ('detail' in err) {
+				} else {
+				}
+				return null;
+			});
+	};
 </script>
 
 <div class="row h-full w-1/2 p-2 {$mobile ? 'w-full' : ''}">
@@ -103,7 +128,12 @@
 					{/if}
 				</div>
 
-				<button class="bg-transparent hover:bg-gray-100 text-gray-700 dark:text-white dark:hover:bg-gray-800 rounded-full size-8 flex justify-center items-center outline-hidden focus:outline-hidden" on:click={() => {}}> <Exploit></Exploit></button>
+				<button
+					class="bg-transparent hover:bg-gray-100 text-gray-700 dark:text-white dark:hover:bg-gray-800 rounded-full size-8 flex justify-center items-center outline-hidden focus:outline-hidden"
+					on:click={onExploit}
+				>
+					<Exploit></Exploit></button
+				>
 				<!-- <div class="flex items-center text-xl font-semibold">{$i18n.t('Workspace')}</div> -->
 			</div>
 		</nav>
