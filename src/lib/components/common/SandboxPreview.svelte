@@ -20,6 +20,9 @@
 	import Sidebar from '../icons/Sidebar.svelte';
 	import PhonePreview from '../chat/PhonePreview.svelte';
 	import ClosePreview from '../icons/ClosePreview.svelte';
+	import Clip from '../icons/Clip.svelte';
+	import BookOpen from '../icons/BookOpen.svelte';
+	import Exploit from '../icons/Exploit.svelte';
 </script>
 
 <div class="row h-full w-1/2 p-2 {$mobile ? 'w-full' : ''}">
@@ -66,47 +69,47 @@
 					</div>
 				{/if}
 
-				<div class="">
-					<div
-						class="flex gap-1 scrollbar-none overflow-x-auto w-fit text-center text-sm font-medium rounded-full bg-transparent py-1 touch-auto pointer-events-auto"
-					>
-						{#if $user?.role === 'admin' || $user?.permissions?.workspace?.models}
-							<a
-								class="min-w-fit p-1.5 {$showPreviewCode
-									? ''
-									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
-								on:click={() => {
-									showPreviewCode.set(true);
-									showPreviewLive.set(false);
-								}}
-								href=""
-							>
-								{$i18n.t('Code')}
-							</a>
-						{/if}
+				<div
+					class="flex gap-1 scrollbar-none overflow-x-auto w-fit text-center text-sm font-medium rounded-full bg-transparent py-1 touch-auto pointer-events-auto"
+				>
+					{#if $user?.role === 'admin' || $user?.permissions?.workspace?.models}
+						<a
+							class="min-w-fit p-1.5 {$showPreviewCode
+								? ''
+								: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
+							on:click={() => {
+								showPreviewCode.set(true);
+								showPreviewLive.set(false);
+							}}
+							href=""
+						>
+							{$i18n.t('Code')}
+						</a>
+					{/if}
 
-						{#if $user?.role === 'admin' || $user?.permissions?.workspace?.models}
-							<a
-								class="min-w-fit p-1.5 {$showPreviewLive
-									? ''
-									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
-								on:click={() => {
-									showPreviewCode.set(false);
-									showPreviewLive.set(true);
-								}}
-								href=""
-							>
-								{$i18n.t('Preview')}
-							</a>
-						{/if}
-					</div>
+					{#if $user?.role === 'admin' || $user?.permissions?.workspace?.models}
+						<a
+							class="min-w-fit p-1.5 {$showPreviewLive
+								? ''
+								: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
+							on:click={() => {
+								showPreviewCode.set(false);
+								showPreviewLive.set(true);
+							}}
+							href=""
+						>
+							{$i18n.t('Preview')}
+						</a>
+					{/if}
 				</div>
 
+				<button class="bg-transparent hover:bg-gray-100 text-gray-700 dark:text-white dark:hover:bg-gray-800 rounded-full size-8 flex justify-center items-center outline-hidden focus:outline-hidden" on:click={() => {}}> <Exploit></Exploit></button>
 				<!-- <div class="flex items-center text-xl font-semibold">{$i18n.t('Workspace')}</div> -->
 			</div>
 		</nav>
 		{#if $showPreviewCode}
-			<JavascriptCodeEditor lang="JavaScript" id="JavaScript" value='{$currentPreviewCode}'></JavascriptCodeEditor>
+			<JavascriptCodeEditor lang="JavaScript" id="JavaScript" value={$currentPreviewCode}
+			></JavascriptCodeEditor>
 		{/if}
 		{#if $showPreviewLive}
 			<PhonePreview></PhonePreview>
