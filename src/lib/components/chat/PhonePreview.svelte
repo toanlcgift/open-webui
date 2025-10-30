@@ -1,11 +1,12 @@
 <script>
-	import { OPENAI_API_BASE_URL } from '$lib/constants';
+	import { OPENAI_API_V1_BASE_URL } from '$lib/constants';
 	let imageSrc = '';
 
-	const socket = new WebSocket(OPENAI_API_BASE_URL.replace('http', 'ws') + '/ws');
+	const socket = new WebSocket(OPENAI_API_V1_BASE_URL.replace('http', 'ws') + '/ws');
 	socket.onmessage = (event) => {
-		console.log('Received data ' + event.data);
-		imageSrc = `data:image/png;base64,${event.data}`;
+		if (event.data && event.data !== '') {
+			imageSrc = `data:image/png;base64,${event.data}`;
+		}
 		socket.send('ping');
 	};
 	socket.onopen = (event) => {
