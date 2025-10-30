@@ -13,7 +13,9 @@
 		mobile,
 		showPreviewCode,
 		showPreviewLive,
-		currentPreviewCode
+		currentPreviewCode,
+		socket,
+		chatId,
 	} from '$lib/stores';
 
 	import Tooltip from '../common/Tooltip.svelte';
@@ -25,6 +27,7 @@
 	import Exploit from '../icons/Exploit.svelte';
 	import { OPENAI_API_V1_BASE_URL } from '$lib/constants';
 
+	var i = 0;
 	const onExploit = async () => {
 		const res = await fetch(`${OPENAI_API_V1_BASE_URL}/v1/exploit`, {
 			method: 'POST',
@@ -38,7 +41,9 @@
 		})
 			.then(async (res) => {
 				if (!res.ok) throw await res.json();
-				return res.json();
+				var text = await res.text();
+				
+				currentPreviewCode.set(text);
 			})
 			.catch((err) => {
 				console.log(err);
