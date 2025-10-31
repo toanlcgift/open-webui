@@ -33,6 +33,7 @@
 	import { OPENAI_API_V1_BASE_URL } from '$lib/constants';
 
 	let applications: Array<{ pid: string; name: string; identifier: string }> = [];
+	let currentApplication: string = '';
 
 	const onExploit = async () => {
 		if (!$settings.phoneIP) {
@@ -48,7 +49,8 @@
 			body: JSON.stringify({
 				Code: $currentPreviewCode,
 				ModelId: $settings.title?.model,
-				PhoneIP: $settings.phoneIP
+				PhoneIP: $settings.phoneIP,
+				AppName: `-f ${currentApplication}`
 			})
 		})
 			.then(async (res) => {
@@ -206,6 +208,7 @@
 						class="dark:bg-gray-900 w-fit pr-8 rounded-sm py-2 px-2 text-xs bg-transparent text-right {$settings.highContrastMode
 							? ''
 							: 'outline-hidden'}"
+							bind:value={currentApplication}
 						placeholder={$i18n.t('Select an application')}
 						on:change={(e) => {
 						}}
