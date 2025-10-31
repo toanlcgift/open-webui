@@ -199,6 +199,7 @@ type Settings = {
 	ctrlEnterToSend?: boolean;
 
 	system?: string;
+	phoneIP?: string;
 	seed?: number;
 	temperature?: string;
 	repeat_penalty?: string;

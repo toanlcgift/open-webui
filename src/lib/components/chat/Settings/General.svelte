@@ -21,6 +21,7 @@
 	let lang = $i18n.language;
 	let notificationEnabled = false;
 	let system = '';
+	let phoneIP = '';
 
 	let showAdvanced = false;
 
@@ -102,7 +103,8 @@
 				think: params.think !== null ? params.think : undefined,
 				keep_alive: params.keep_alive !== null ? params.keep_alive : undefined,
 				format: params.format !== null ? params.format : undefined
-			}
+			},
+			phoneIP: phoneIP !== '' ? phoneIP : undefined
 		});
 		dispatch('save');
 	};
@@ -114,6 +116,7 @@
 
 		notificationEnabled = $settings.notificationEnabled ?? false;
 		system = $settings.system ?? '';
+		phoneIP = $settings.phoneIP ?? '';
 
 		params = { ...params, ...$settings.params };
 		params.stop = $settings?.params?.stop ? ($settings?.params?.stop ?? []).join(',') : null;
@@ -242,16 +245,6 @@
 						? 'text-gray-800 dark:text-gray-100'
 						: 'text-gray-400 dark:text-gray-500'}"
 				>
-					Couldn't find your language?
-					<a
-						class="font-medium underline {($settings?.highContrastMode ?? false)
-							? 'text-gray-700 dark:text-gray-200'
-							: 'text-gray-300'}"
-						href="https://github.com/open-webui/open-webui/blob/main/docs/CONTRIBUTING.md#-translations-and-internationalization"
-						target="_blank"
-					>
-						Help us translate Open WebUI!
-					</a>
 				</div>
 			{/if}
 
@@ -289,6 +282,18 @@
 							: '  dark:text-gray-300 ')}
 					rows="4"
 					placeholder={$i18n.t('Enter system prompt here')}
+				/>
+			</div>
+
+			<div>
+				<div class=" my-2.5 text-sm font-medium">{$i18n.t('Phone IP:')}</div>
+				<input
+					bind:value={phoneIP}
+					class={'w-full text-sm outline-hidden resize-vertical' +
+						($settings.highContrastMode
+							? ' p-2.5 border-2 border-gray-300 dark:border-gray-700 rounded-lg bg-transparent text-gray-900 dark:text-gray-100 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 overflow-y-hidden'
+							: '  dark:text-gray-300 ')}
+					placeholder={$i18n.t('Enter phone IP')}
 				/>
 			</div>
 		{/if}
