@@ -16,6 +16,7 @@
 		currentPreviewCode,
 		socket,
 		chatId,
+		settings
 	} from '$lib/stores';
 
 	import Tooltip from '../common/Tooltip.svelte';
@@ -26,8 +27,7 @@
 	import BookOpen from '../icons/BookOpen.svelte';
 	import Exploit from '../icons/Exploit.svelte';
 	import { OPENAI_API_V1_BASE_URL } from '$lib/constants';
-
-	var i = 0;
+	
 	const onExploit = async () => {
 		const res = await fetch(`${OPENAI_API_V1_BASE_URL}/v1/exploit`, {
 			method: 'POST',
@@ -36,7 +36,8 @@
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				code: $currentPreviewCode
+				Code: $currentPreviewCode,
+				ModelId: $settings.title?.model
 			})
 		})
 			.then(async (res) => {
