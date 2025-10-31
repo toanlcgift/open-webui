@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	const i18n: Writable<i18nType> = getContext('i18n');
 
 	import { type Writable } from 'svelte/store';
@@ -19,7 +19,8 @@
 		currentConsoleLog,
 		socket,
 		chatId,
-		settings
+		settings,
+		models
 	} from '$lib/stores';
 
 	import Tooltip from '../common/Tooltip.svelte';
@@ -30,6 +31,8 @@
 	import BookOpen from '../icons/BookOpen.svelte';
 	import Exploit from '../icons/Exploit.svelte';
 	import { OPENAI_API_V1_BASE_URL } from '$lib/constants';
+
+	let applications: Array<{ pid: string; name: string; identifier: string }> = [];
 
 	const onExploit = async () => {
 		if (!$settings.phoneIP) {
@@ -44,7 +47,8 @@
 			},
 			body: JSON.stringify({
 				Code: $currentPreviewCode,
-				ModelId: $settings.title?.model
+				ModelId: $settings.title?.model,
+				PhoneIP: $settings.phoneIP
 			})
 		})
 			.then(async (res) => {
@@ -65,6 +69,40 @@
 				return null;
 			});
 	};
+
+	const onLoadApplications = async () => {
+		if (!$settings.phoneIP) {
+			toast.error($i18n.t('Please set the Phone IP address in Settings first.'));
+			return;
+		}
+		
+		const res = await fetch(`${OPENAI_API_V1_BASE_URL}/v1/process_list`, {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				PhoneIP: $settings.phoneIP
+			})
+		})
+			.then(async (res) => {
+				if (!res.ok) throw await res.json();
+				applications = await res.json();
+			})
+			.catch((err) => {
+				toast.error(err.toString());
+				currentConsoleLog.set(err.toString());
+				if ('detail' in err) {
+				} else {
+				}
+				return null;
+			});
+	};
+
+	onMount(async () => {
+		await onLoadApplications();
+	});
 </script>
 
 <div class="row h-full w-1/2 p-2 {$mobile ? 'w-full' : ''}">
@@ -161,6 +199,21 @@
 							{$i18n.t('Console')}
 						</a>
 					{/if}
+				</div>
+
+				<div class="flex items-center relative">
+					<select
+						class="dark:bg-gray-900 w-fit pr-8 rounded-sm py-2 px-2 text-xs bg-transparent text-right {$settings.highContrastMode
+							? ''
+							: 'outline-hidden'}"
+						placeholder={$i18n.t('Select an application')}
+						on:change={(e) => {
+						}}
+					>
+						{#each applications as application}
+							<option value={application['identifier']}>{application['identifier']}</option>
+						{/each}
+					</select>
 				</div>
 
 				<button
