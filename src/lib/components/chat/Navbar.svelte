@@ -15,8 +15,9 @@
 		temporaryChatEnabled,
 		user,
 		showPreview,
-
-		showPreviewCode
+		showPreviewCode,
+		showPreviewLive,
+		showConsoleLog
 
 	} from '$lib/stores';
 
@@ -230,6 +231,8 @@
 								on:click={async () => {
 									await showPreview.set(!$showPreview);
 									await showPreviewCode.set(true);
+									await showPreviewLive.set(false);
+									await showConsoleLog.set(false);
 								}}
 								aria-label="Preview"
 							>

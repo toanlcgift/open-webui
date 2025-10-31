@@ -13,7 +13,9 @@
 		mobile,
 		showPreviewCode,
 		showPreviewLive,
+		showConsoleLog,
 		currentPreviewCode,
+		currentConsoleLog,
 		socket,
 		chatId,
 		settings
@@ -44,7 +46,10 @@
 				if (!res.ok) throw await res.json();
 				var text = await res.text();
 				
-				currentPreviewCode.set(text);
+				showPreviewCode.set(false);
+				showPreviewLive.set(true);
+				showConsoleLog.set(false);
+				currentConsoleLog.set(text);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -111,6 +116,7 @@
 							on:click={() => {
 								showPreviewCode.set(true);
 								showPreviewLive.set(false);
+								showConsoleLog.set(false);
 							}}
 							href=""
 						>
@@ -126,10 +132,27 @@
 							on:click={() => {
 								showPreviewCode.set(false);
 								showPreviewLive.set(true);
+								showConsoleLog.set(false);
 							}}
 							href=""
 						>
 							{$i18n.t('Preview')}
+						</a>
+					{/if}
+
+					{#if $user?.role === 'admin' || $user?.permissions?.workspace?.models}
+						<a
+							class="min-w-fit p-1.5 {$showConsoleLog
+								? ''
+								: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition"
+							on:click={() => {
+								showPreviewCode.set(false);
+								showPreviewLive.set(false);
+								showConsoleLog.set(true);
+							}}
+							href=""
+						>
+							{$i18n.t('Console')}
 						</a>
 					{/if}
 				</div>
@@ -149,6 +172,10 @@
 		{/if}
 		{#if $showPreviewLive}
 			<PhonePreview></PhonePreview>
+		{/if}
+		{#if $showConsoleLog}
+			<JavascriptCodeEditor lang="JavaScript" id="ConsoleLog" value={$currentConsoleLog}
+			></JavascriptCodeEditor>
 		{/if}
 	</div>
 </div>

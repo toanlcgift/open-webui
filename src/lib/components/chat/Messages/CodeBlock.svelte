@@ -100,6 +100,7 @@
 	const showPreviewCodeBlock = () => {
 		onShowPreviewCode(code);
 		showPreview.set(true);
+		showPreviewCode.set(true);
 		currentPreviewCode.set(code);
 	};
 
