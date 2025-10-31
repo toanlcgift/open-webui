@@ -5,6 +5,7 @@
 	import { type Writable } from 'svelte/store';
 	import type { i18n as i18nType } from 'i18next';
 	import JavascriptCodeEditor from '$lib/components/common/JavascriptCodeEditor.svelte';
+	import { toast } from 'svelte-sonner';
 
 	import {
 		showSidebar,
@@ -29,8 +30,12 @@
 	import BookOpen from '../icons/BookOpen.svelte';
 	import Exploit from '../icons/Exploit.svelte';
 	import { OPENAI_API_V1_BASE_URL } from '$lib/constants';
-	
+
 	const onExploit = async () => {
+		if (!$settings.phoneIP) {
+			toast.error($i18n.t('Please set the Phone IP address in Settings first.'));
+			return;
+		}
 		const res = await fetch(`${OPENAI_API_V1_BASE_URL}/v1/exploit`, {
 			method: 'POST',
 			headers: {
@@ -45,14 +50,15 @@
 			.then(async (res) => {
 				if (!res.ok) throw await res.json();
 				var text = await res.text();
-				
+
 				showPreviewCode.set(false);
 				showPreviewLive.set(true);
 				showConsoleLog.set(false);
 				currentConsoleLog.set(text);
 			})
 			.catch((err) => {
-				console.log(err);
+				toast.error(err.toString());
+				currentConsoleLog.set(err.toString());
 				if ('detail' in err) {
 				} else {
 				}
