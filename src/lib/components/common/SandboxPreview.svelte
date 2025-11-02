@@ -98,6 +98,11 @@
 				if ('detail' in err) {
 				} else {
 				}
+				applications = [{
+					pid: "Zer0Cy Application",
+					name: 'Zer0Cy Application',
+					identifier: 'Zer0Cy Application'
+				}];
 				return null;
 			});
 	};
