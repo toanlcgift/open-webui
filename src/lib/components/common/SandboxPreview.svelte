@@ -20,7 +20,8 @@
 		socket,
 		chatId,
 		settings,
-		models
+		models,
+		currentSelectedModel
 	} from '$lib/stores';
 
 	import Tooltip from '../common/Tooltip.svelte';
@@ -40,6 +41,8 @@
 			toast.error($i18n.t('Please set the Phone IP address in Settings first.'));
 			return;
 		}
+
+		console.log("current Selected model: " + $currentSelectedModel);
 		const res = await fetch(`${OPENAI_API_V1_BASE_URL}/v1/exploit`, {
 			method: 'POST',
 			headers: {

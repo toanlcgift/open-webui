@@ -86,6 +86,7 @@ export const showPreviewLive = writable(false);
 export const showConsoleLog = writable(false);
 export const currentPreviewCode = writable('');
 export const currentConsoleLog = writable('');
+export const currentSelectedModel = writable('');
 
 export const embed = writable(null);
 export const artifactCode = writable(null);
