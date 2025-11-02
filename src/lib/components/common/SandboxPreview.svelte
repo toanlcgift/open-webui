@@ -77,7 +77,7 @@
 			toast.error($i18n.t('Please set the Phone IP address in Settings first.'));
 			return;
 		}
-		
+
 		const res = await fetch(`${OPENAI_API_V1_BASE_URL}/v1/process_list`, {
 			method: 'POST',
 			headers: {
@@ -208,13 +208,14 @@
 						class="dark:bg-gray-900 w-fit pr-8 rounded-sm py-2 px-2 text-xs bg-transparent text-right {$settings.highContrastMode
 							? ''
 							: 'outline-hidden'}"
-							bind:value={currentApplication}
+						bind:value={currentApplication}
 						placeholder={$i18n.t('Select an application')}
-						on:change={(e) => {
-						}}
+						on:change={(e) => {}}
 					>
 						{#each applications as application}
-							<option value={application['identifier']}>{application['identifier']}</option>
+							<option value={application['identifier'] ?? application['name']}
+								>{application['identifier'] ?? application['name']}</option
+							>
 						{/each}
 					</select>
 				</div>
