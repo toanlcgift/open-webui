@@ -32,9 +32,11 @@
 	import BookOpen from '../icons/BookOpen.svelte';
 	import Exploit from '../icons/Exploit.svelte';
 	import { OPENAI_API_V1_BASE_URL } from '$lib/constants';
+	import Switch from '$lib/components/common/Switch.svelte';
 
 	let applications: Array<{ pid: string; name: string; identifier: string }> = [];
 	let currentApplication: string = '';
+	let forceRunning = true;
 
 	const onExploit = async () => {
 		if (!$settings.phoneIP) {
@@ -42,7 +44,7 @@
 			return;
 		}
 
-		console.log("current Selected model: " + $currentSelectedModel);
+		console.log('current Selected model: ' + $currentSelectedModel);
 		const res = await fetch(`${OPENAI_API_V1_BASE_URL}/v1/exploit`, {
 			method: 'POST',
 			headers: {
@@ -53,7 +55,11 @@
 				Code: $currentPreviewCode,
 				ModelId: $settings.title?.model,
 				PhoneIP: $settings.phoneIP,
-				AppName: `-f ${currentApplication}`
+				AppName: forceRunning
+					? `-f ${currentApplication}`
+					: applications.filter(
+							(app) => (app['identifier'] ?? app['name']) === currentApplication
+						)[0]?.name
 			})
 		})
 			.then(async (res) => {
@@ -101,11 +107,13 @@
 				if ('detail' in err) {
 				} else {
 				}
-				applications = [{
-					pid: "Zer0Cy Application",
-					name: 'Zer0Cy Application',
-					identifier: 'Zer0Cy Application'
-				}];
+				applications = [
+					{
+						pid: 'Zer0Cy Application',
+						name: 'Zer0Cy Application',
+						identifier: 'Zer0Cy Application'
+					}
+				];
 				return null;
 			});
 	};
@@ -226,6 +234,13 @@
 							>
 						{/each}
 					</select>
+
+					<Switch
+						ariaLabelledbyId="use-chat-title-as-tab-title-label"
+						tooltip={true}
+						bind:state={forceRunning}
+						on:change={() => {}}
+					/>
 				</div>
 
 				<button
