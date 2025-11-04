@@ -53,7 +53,7 @@
 			},
 			body: JSON.stringify({
 				Code: $currentPreviewCode,
-				ModelId: $settings.title?.model,
+				ModelId: $currentSelectedModel,
 				PhoneIP: $settings.phoneIP,
 				AppName: forceRunning
 					? `-f ${currentApplication}`
