@@ -56,7 +56,7 @@
 				ModelId: $currentSelectedModel,
 				PhoneIP: $settings.phoneIP,
 				AppName: forceRunning
-					? `-f ${currentApplication}`
+					? currentApplication
 					: applications.filter(
 							(app) => (app['identifier'] ?? app['name']) === currentApplication
 						)[0]?.name
