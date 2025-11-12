@@ -244,7 +244,6 @@
 						ariaLabelledbyId="use-chat-title-as-tab-title-label"
 						tooltip={true}
 						bind:state={forceRunning}
-						on:change={onForceRunningChange}
 					/>
 				</div>
 
