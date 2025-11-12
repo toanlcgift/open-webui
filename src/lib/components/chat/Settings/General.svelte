@@ -286,14 +286,14 @@
 			</div>
 
 			<div>
-				<div class=" my-2.5 text-sm font-medium">{$i18n.t('Phone IP:')}</div>
+				<div class=" my-2.5 text-sm font-medium">{$i18n.t('Device IP:')}</div>
 				<input
 					bind:value={phoneIP}
 					class={'w-full text-sm outline-hidden resize-vertical' +
 						($settings.highContrastMode
 							? ' p-2.5 border-2 border-gray-300 dark:border-gray-700 rounded-lg bg-transparent text-gray-900 dark:text-gray-100 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 overflow-y-hidden'
 							: '  dark:text-gray-300 ')}
-					placeholder={$i18n.t('Enter phone IP')}
+					placeholder={$i18n.t('Device IP')}
 				/>
 			</div>
 		{/if}
