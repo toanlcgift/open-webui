@@ -94,7 +94,8 @@
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				PhoneIP: $settings.phoneIP
+				PhoneIP: $settings.phoneIP,
+				ForceRun: forceRunning
 			})
 		})
 			.then(async (res) => {
@@ -116,6 +117,10 @@
 				];
 				return null;
 			});
+	};
+
+	const onForceRunningChange = async () => {
+		await onLoadApplications();
 	};
 
 	onMount(async () => {
@@ -239,7 +244,7 @@
 						ariaLabelledbyId="use-chat-title-as-tab-title-label"
 						tooltip={true}
 						bind:state={forceRunning}
-						on:change={() => {}}
+						on:change={onForceRunningChange}
 					/>
 				</div>
 
