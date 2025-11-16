@@ -257,7 +257,13 @@
 			</div>
 		</nav>
 		{#if $showPreviewCode}
-			<JavascriptCodeEditor lang="JavaScript" id="JavaScript" value={$currentPreviewCode}
+			<JavascriptCodeEditor
+				lang="JavaScript"
+				id="JavaScript"
+				value={$currentPreviewCode}
+				onChange={(val) => {
+					$currentPreviewCode = val;
+				}}
 			></JavascriptCodeEditor>
 		{/if}
 		{#if $showPreviewLive}

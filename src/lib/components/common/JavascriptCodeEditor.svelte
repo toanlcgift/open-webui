@@ -26,7 +26,7 @@
 	export let value = '';
 
 	export let onSave = () => {};
-	export let onChange = () => {};
+	export let onChange = (val: string) => {};
 
 	let _value = '';
 
