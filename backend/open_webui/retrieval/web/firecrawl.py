@@ -1,10 +1,9 @@
 import logging
 from typing import Optional, List
-from urllib.parse import urljoin
 
-import requests
 from open_webui.retrieval.web.main import SearchResult, get_filtered_results
 from open_webui.env import SRC_LOG_LEVELS
+
 
 log = logging.getLogger(__name__)
 log.setLevel(SRC_LOG_LEVELS["RAG"])
@@ -30,15 +29,14 @@ def search_firecrawl(
                 "limit": count,
             },
         )
-        response.raise_for_status()
-        results = response.json().get("data", [])
+        results = response.web
         if filter_list:
             results = get_filtered_results(results, filter_list)
         results = [
             SearchResult(
-                link=result.get("url"),
-                title=result.get("title"),
-                snippet=result.get("description"),
+                link=result.url,
+                title=result.title,
+                snippet=result.description,
             )
             for result in results[:count]
         ]
