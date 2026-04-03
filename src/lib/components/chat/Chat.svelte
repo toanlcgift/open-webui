@@ -109,7 +109,6 @@
 	import Image from '../common/Image.svelte';
 	import { getBanners } from '$lib/apis/configs';
 
-	import { updateFolderById } from '$lib/apis/folders';
 	import SandboxPreview from '../common/SandboxPreview.svelte';
 	export let chatIdProp = '';
 
