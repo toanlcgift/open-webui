@@ -2,7 +2,7 @@
 	import hljs from 'highlight.js';
 	import { toast } from 'svelte-sonner';
 	import { getContext, onMount, tick, onDestroy } from 'svelte';
-	import { config, showPreview, showPreviewCode, currentPreviewCode } from '$lib/stores';
+	import { config, pyodideWorker as pyodideWorkerStore, showPreview, showPreviewCode, currentPreviewCode } from '$lib/stores';
 
 	import PyodideWorker from '$lib/workers/pyodide.worker?worker';
 	import { executeCode } from '$lib/apis/utils';
