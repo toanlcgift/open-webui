@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { models, showSettings, settings, user, mobile, config } from '$lib/stores';
+	import { models, showSettings, settings, user, mobile, config, currentSelectedModel } from '$lib/stores';
 	import { onMount, tick, getContext } from 'svelte';
 	import { toast } from 'svelte-sonner';
 	import Selector from './ModelSelector/Selector.svelte';
@@ -46,6 +46,7 @@
 		if (JSON.stringify(_selectedModels) !== JSON.stringify(selectedModels)) {
 			selectedModels = _selectedModels;
 		}
+		currentSelectedModel.set(selectedModels[0]);
 	}
 </script>
 

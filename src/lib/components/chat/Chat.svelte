@@ -23,6 +23,7 @@
 		tags as allTags,
 		settings,
 		showSidebar,
+		showPreview,
 		WEBUI_NAME,
 		banners,
 		user,
@@ -108,6 +109,8 @@
 	import Image from '../common/Image.svelte';
 	import { getBanners } from '$lib/apis/configs';
 
+	import { updateFolderById } from '$lib/apis/folders';
+	import SandboxPreview from '../common/SandboxPreview.svelte';
 	export let chatIdProp = '';
 
 	let loading = true;
@@ -2963,6 +2966,10 @@
 						{/if}
 					</div>
 				</Pane>
+
+				{#if $showPreview}
+					<SandboxPreview></SandboxPreview>
+				{/if}
 
 				<ChatControls
 					bind:this={controlPaneComponent}

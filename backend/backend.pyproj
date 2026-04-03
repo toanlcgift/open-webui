@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{f315ca8f-67e3-4724-a21d-b94bec0e3921}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile />
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId>Global|PythonCore|3.11</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="data\readme.txt" />
+    <Content Include="open_webui\alembic.ini" />
+    <Content Include="open_webui\data\readme.txt" />
+    <Content Include="open_webui\static\apple-touch-icon.png" />
+    <Content Include="open_webui\static\assets\pdf-style.css" />
+    <Content Include="open_webui\static\custom.css" />
+    <Content Include="open_webui\static\favicon-96x96.png" />
+    <Content Include="open_webui\static\favicon-dark.png" />
+    <Content Include="open_webui\static\favicon.ico" />
+    <Content Include="open_webui\static\favicon.png" />
+    <Content Include="open_webui\static\favicon.svg" />
+    <Content Include="open_webui\static\loader.js" />
+    <Content Include="open_webui\static\logo.png" />
+    <Content Include="open_webui\static\splash-dark.png" />
+    <Content Include="open_webui\static\splash.png" />
+    <Content Include="open_webui\static\swagger-ui\favicon.png" />
+    <Content Include="open_webui\static\swagger-ui\swagger-ui-bundle.js" />
+    <Content Include="open_webui\static\swagger-ui\swagger-ui.css" />
+    <Content Include="open_webui\static\user.png" />
+    <Content Include="open_webui\static\web-app-manifest-192x192.png" />
+    <Content Include="open_webui\static\web-app-manifest-512x512.png" />
+    <Content Include="requirements.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="open_webui\config.py" />
+    <Compile Include="open_webui\constants.py" />
+    <Compile Include="open_webui\env.py" />
+    <Compile Include="open_webui\functions.py" />
+    <Compile Include="open_webui\internal\db.py" />
+    <Compile Include="open_webui\internal\migrations\001_initial_schema.py" />
+    <Compile Include="open_webui\internal\migrations\002_add_local_sharing.py" />
+    <Compile Include="open_webui\internal\migrations\003_add_auth_api_key.py" />
+    <Compile Include="open_webui\internal\migrations\004_add_archived.py" />
+    <Compile Include="open_webui\internal\migrations\005_add_updated_at.py" />
+    <Compile Include="open_webui\internal\migrations\006_migrate_timestamps_and_charfields.py" />
+    <Compile Include="open_webui\internal\migrations\007_add_user_last_active_at.py" />
+    <Compile Include="open_webui\internal\migrations\008_add_memory.py" />
+    <Compile Include="open_webui\internal\migrations\009_add_models.py" />
+    <Compile Include="open_webui\internal\migrations\010_migrate_modelfiles_to_models.py" />
+    <Compile Include="open_webui\internal\migrations\011_add_user_settings.py" />
+    <Compile Include="open_webui\internal\migrations\012_add_tools.py" />
+    <Compile Include="open_webui\internal\migrations\013_add_user_info.py" />
+    <Compile Include="open_webui\internal\migrations\014_add_files.py" />
+    <Compile Include="open_webui\internal\migrations\015_add_functions.py" />
+    <Compile Include="open_webui\internal\migrations\016_add_valves_and_is_active.py" />
+    <Compile Include="open_webui\internal\migrations\017_add_user_oauth_sub.py" />
+    <Compile Include="open_webui\internal\migrations\018_add_function_is_global.py" />
+    <Compile Include="open_webui\internal\wrappers.py" />
+    <Compile Include="open_webui\main.py" />
+    <Compile Include="open_webui\migrations\env.py" />
+    <Compile Include="open_webui\migrations\util.py" />
+    <Compile Include="open_webui\migrations\versions\018012973d35_add_indexes.py" />
+    <Compile Include="open_webui\migrations\versions\1af9b942657b_migrate_tags.py" />
+    <Compile Include="open_webui\migrations\versions\242a2047eae0_update_chat_table.py" />
+    <Compile Include="open_webui\migrations\versions\3781e22d8b01_update_message_table.py" />
+    <Compile Include="open_webui\migrations\versions\38d63c18f30f_add_oauth_session_table.py" />
+    <Compile Include="open_webui\migrations\versions\3ab32c4b8f59_update_tags.py" />
+    <Compile Include="open_webui\migrations\versions\3af16a1c9fb6_update_user_table.py" />
+    <Compile Include="open_webui\migrations\versions\4ace53fd72c8_update_folder_table_datetime.py" />
+    <Compile Include="open_webui\migrations\versions\57c599a3cb57_add_channel_table.py" />
+    <Compile Include="open_webui\migrations\versions\6a39f3d8e55c_add_knowledge_table.py" />
+    <Compile Include="open_webui\migrations\versions\7826ab40b532_update_file_table.py" />
+    <Compile Include="open_webui\migrations\versions\7e5b5dc7342b_init.py" />
+    <Compile Include="open_webui\migrations\versions\922e7a387820_add_group_table.py" />
+    <Compile Include="open_webui\migrations\versions\9f0c9cd09105_add_note_table.py" />
+    <Compile Include="open_webui\migrations\versions\a5c220713937_add_reply_to_id_column_to_message.py" />
+    <Compile Include="open_webui\migrations\versions\af906e964978_add_feedback_table.py" />
+    <Compile Include="open_webui\migrations\versions\c0fbf31ca0db_update_file_table.py" />
+    <Compile Include="open_webui\migrations\versions\c29facfe716b_update_file_table_path.py" />
+    <Compile Include="open_webui\migrations\versions\c69f45358db4_add_folder_table.py" />
+    <Compile Include="open_webui\migrations\versions\ca81bd47c050_add_config_table.py" />
+    <Compile Include="open_webui\migrations\versions\d31026856c01_update_folder_table_data.py" />
+    <Compile Include="open_webui\models\auths.py" />
+    <Compile Include="open_webui\models\channels.py" />
+    <Compile Include="open_webui\models\chats.py" />
+    <Compile Include="open_webui\models\feedbacks.py" />
+    <Compile Include="open_webui\models\files.py" />
+    <Compile Include="open_webui\models\folders.py" />
+    <Compile Include="open_webui\models\functions.py" />
+    <Compile Include="open_webui\models\groups.py" />
+    <Compile Include="open_webui\models\knowledge.py" />
+    <Compile Include="open_webui\models\memories.py" />
+    <Compile Include="open_webui\models\messages.py" />
+    <Compile Include="open_webui\models\models.py" />
+    <Compile Include="open_webui\models\notes.py" />
+    <Compile Include="open_webui\models\oauth_sessions.py" />
+    <Compile Include="open_webui\models\prompts.py" />
+    <Compile Include="open_webui\models\tags.py" />
+    <Compile Include="open_webui\models\tools.py" />
+    <Compile Include="open_webui\models\users.py" />
+    <Compile Include="open_webui\retrieval\loaders\datalab_marker.py" />
+    <Compile Include="open_webui\retrieval\loaders\external_document.py" />
+    <Compile Include="open_webui\retrieval\loaders\external_web.py" />
+    <Compile Include="open_webui\retrieval\loaders\main.py" />
+    <Compile Include="open_webui\retrieval\loaders\mineru.py" />
+    <Compile Include="open_webui\retrieval\loaders\mistral.py" />
+    <Compile Include="open_webui\retrieval\loaders\tavily.py" />
+    <Compile Include="open_webui\retrieval\loaders\youtube.py" />
+    <Compile Include="open_webui\retrieval\models\base_reranker.py" />
+    <Compile Include="open_webui\retrieval\models\colbert.py" />
+    <Compile Include="open_webui\retrieval\models\external.py" />
+    <Compile Include="open_webui\retrieval\utils.py" />
+    <Compile Include="open_webui\retrieval\vector\dbs\chroma.py" />
+    <Compile Include="open_webui\retrieval\vector\dbs\elasticsearch.py" />
+    <Compile Include="open_webui\retrieval\vector\dbs\milvus.py" />
+    <Compile Include="open_webui\retrieval\vector\dbs\milvus_multitenancy.py" />
+    <Compile Include="open_webui\retrieval\vector\dbs\opensearch.py" />
+    <Compile Include="open_webui\retrieval\vector\dbs\oracle23ai.py" />
+    <Compile Include="open_webui\retrieval\vector\dbs\pgvector.py" />
+    <Compile Include="open_webui\retrieval\vector\dbs\pinecone.py" />
+    <Compile Include="open_webui\retrieval\vector\dbs\qdrant.py" />
+    <Compile Include="open_webui\retrieval\vector\dbs\qdrant_multitenancy.py" />
+    <Compile Include="open_webui\retrieval\vector\dbs\s3vector.py" />
+    <Compile Include="open_webui\retrieval\vector\factory.py" />
+    <Compile Include="open_webui\retrieval\vector\main.py" />
+    <Compile Include="open_webui\retrieval\vector\type.py" />
+    <Compile Include="open_webui\retrieval\vector\utils.py" />
+    <Compile Include="open_webui\retrieval\web\bing.py" />
+    <Compile Include="open_webui\retrieval\web\bocha.py" />
+    <Compile Include="open_webui\retrieval\web\brave.py" />
+    <Compile Include="open_webui\retrieval\web\duckduckgo.py" />
+    <Compile Include="open_webui\retrieval\web\exa.py" />
+    <Compile Include="open_webui\retrieval\web\external.py" />
+    <Compile Include="open_webui\retrieval\web\firecrawl.py" />
+    <Compile Include="open_webui\retrieval\web\google_pse.py" />
+    <Compile Include="open_webui\retrieval\web\jina_search.py" />
+    <Compile Include="open_webui\retrieval\web\kagi.py" />
+    <Compile Include="open_webui\retrieval\web\main.py" />
+    <Compile Include="open_webui\retrieval\web\mojeek.py" />
+    <Compile Include="open_webui\retrieval\web\ollama.py" />
+    <Compile Include="open_webui\retrieval\web\perplexity.py" />
+    <Compile Include="open_webui\retrieval\web\perplexity_search.py" />
+    <Compile Include="open_webui\retrieval\web\searchapi.py" />
+    <Compile Include="open_webui\retrieval\web\searxng.py" />
+    <Compile Include="open_webui\retrieval\web\serpapi.py" />
+    <Compile Include="open_webui\retrieval\web\serper.py" />
+    <Compile Include="open_webui\retrieval\web\serply.py" />
+    <Compile Include="open_webui\retrieval\web\serpstack.py" />
+    <Compile Include="open_webui\retrieval\web\sougou.py" />
+    <Compile Include="open_webui\retrieval\web\tavily.py" />
+    <Compile Include="open_webui\retrieval\web\utils.py" />
+    <Compile Include="open_webui\retrieval\web\yacy.py" />
+    <Compile Include="open_webui\routers\audio.py" />
+    <Compile Include="open_webui\routers\auths.py" />
+    <Compile Include="open_webui\routers\channels.py" />
+    <Compile Include="open_webui\routers\chats.py" />
+    <Compile Include="open_webui\routers\configs.py" />
+    <Compile Include="open_webui\routers\evaluations.py" />
+    <Compile Include="open_webui\routers\files.py" />
+    <Compile Include="open_webui\routers\folders.py" />
+    <Compile Include="open_webui\routers\functions.py" />
+    <Compile Include="open_webui\routers\groups.py" />
+    <Compile Include="open_webui\routers\images.py" />
+    <Compile Include="open_webui\routers\knowledge.py" />
+    <Compile Include="open_webui\routers\memories.py" />
+    <Compile Include="open_webui\routers\models.py" />
+    <Compile Include="open_webui\routers\notes.py" />
+    <Compile Include="open_webui\routers\ollama.py" />
+    <Compile Include="open_webui\routers\openai.py" />
+    <Compile Include="open_webui\routers\pipelines.py" />
+    <Compile Include="open_webui\routers\prompts.py" />
+    <Compile Include="open_webui\routers\retrieval.py" />
+    <Compile Include="open_webui\routers\scim.py" />
+    <Compile Include="open_webui\routers\tasks.py" />
+    <Compile Include="open_webui\routers\tools.py" />
+    <Compile Include="open_webui\routers\users.py" />
+    <Compile Include="open_webui\routers\utils.py" />
+    <Compile Include="open_webui\socket\main.py" />
+    <Compile Include="open_webui\socket\utils.py" />
+    <Compile Include="open_webui\storage\provider.py" />
+    <Compile Include="open_webui\tasks.py" />
+    <Compile Include="open_webui\test\apps\webui\routers\test_auths.py" />
+    <Compile Include="open_webui\test\apps\webui\routers\test_chats.py" />
+    <Compile Include="open_webui\test\apps\webui\routers\test_models.py" />
+    <Compile Include="open_webui\test\apps\webui\routers\test_prompts.py" />
+    <Compile Include="open_webui\test\apps\webui\routers\test_users.py" />
+    <Compile Include="open_webui\test\apps\webui\storage\test_provider.py" />
+    <Compile Include="open_webui\test\util\abstract_integration_test.py" />
+    <Compile Include="open_webui\test\util\mock_user.py" />
+    <Compile Include="open_webui\test\util\test_redis.py" />
+    <Compile Include="open_webui\test\__init__.py" />
+    <Compile Include="open_webui\utils\access_control.py" />
+    <Compile Include="open_webui\utils\audit.py" />
+    <Compile Include="open_webui\utils\auth.py" />
+    <Compile Include="open_webui\utils\channels.py" />
+    <Compile Include="open_webui\utils\chat.py" />
+    <Compile Include="open_webui\utils\code_interpreter.py" />
+    <Compile Include="open_webui\utils\embeddings.py" />
+    <Compile Include="open_webui\utils\files.py" />
+    <Compile Include="open_webui\utils\filter.py" />
+    <Compile Include="open_webui\utils\images\comfyui.py" />
+    <Compile Include="open_webui\utils\logger.py" />
+    <Compile Include="open_webui\utils\mcp\client.py" />
+    <Compile Include="open_webui\utils\middleware.py" />
+    <Compile Include="open_webui\utils\misc.py" />
+    <Compile Include="open_webui\utils\models.py" />
+    <Compile Include="open_webui\utils\oauth.py" />
+    <Compile Include="open_webui\utils\payload.py" />
+    <Compile Include="open_webui\utils\pdf_generator.py" />
+    <Compile Include="open_webui\utils\plugin.py" />
+    <Compile Include="open_webui\utils\redis.py" />
+    <Compile Include="open_webui\utils\response.py" />
+    <Compile Include="open_webui\utils\security_headers.py" />
+    <Compile Include="open_webui\utils\task.py" />
+    <Compile Include="open_webui\utils\telemetry\constants.py" />
+    <Compile Include="open_webui\utils\telemetry\instrumentors.py" />
+    <Compile Include="open_webui\utils\telemetry\logs.py" />
+    <Compile Include="open_webui\utils\telemetry\metrics.py" />
+    <Compile Include="open_webui\utils\telemetry\setup.py" />
+    <Compile Include="open_webui\utils\telemetry\__init__.py" />
+    <Compile Include="open_webui\utils\tools.py" />
+    <Compile Include="open_webui\utils\webhook.py" />
+    <Compile Include="open_webui\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data" />
+    <Folder Include="open_webui" />
+    <Folder Include="open_webui\data" />
+    <Folder Include="open_webui\internal" />
+    <Folder Include="open_webui\internal\migrations" />
+    <Folder Include="open_webui\migrations" />
+    <Folder Include="open_webui\migrations\versions" />
+    <Folder Include="open_webui\models" />
+    <Folder Include="open_webui\retrieval" />
+    <Folder Include="open_webui\retrieval\loaders" />
+    <Folder Include="open_webui\retrieval\models" />
+    <Folder Include="open_webui\retrieval\vector" />
+    <Folder Include="open_webui\retrieval\vector\dbs" />
+    <Folder Include="open_webui\retrieval\web" />
+    <Folder Include="open_webui\routers" />
+    <Folder Include="open_webui\socket" />
+    <Folder Include="open_webui\static" />
+    <Folder Include="open_webui\static\assets" />
+    <Folder Include="open_webui\static\swagger-ui" />
+    <Folder Include="open_webui\storage" />
+    <Folder Include="open_webui\test" />
+    <Folder Include="open_webui\test\apps\" />
+    <Folder Include="open_webui\test\apps\webui\" />
+    <Folder Include="open_webui\test\apps\webui\routers" />
+    <Folder Include="open_webui\test\apps\webui\storage" />
+    <Folder Include="open_webui\test\util" />
+    <Folder Include="open_webui\utils" />
+    <Folder Include="open_webui\utils\images" />
+    <Folder Include="open_webui\utils\mcp" />
+    <Folder Include="open_webui\utils\telemetry" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.11" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>

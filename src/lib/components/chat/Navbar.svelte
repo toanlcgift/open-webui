@@ -13,7 +13,12 @@
 		showControls,
 		showSidebar,
 		temporaryChatEnabled,
-		user
+		user,
+		showPreview,
+		showPreviewCode,
+		showPreviewLive,
+		showConsoleLog
+
 	} from '$lib/stores';
 
 	import { slide } from 'svelte/transition';
@@ -39,6 +44,8 @@
 	import ChatCheck from '../icons/ChatCheck.svelte';
 	import Knobs from '../icons/Knobs.svelte';
 	import { WEBUI_API_BASE_URL } from '$lib/constants';
+	import OpenPreview from '../icons/OpenPreview.svelte';
+	import ClosePreview from '../icons/ClosePreview.svelte';
 
 	const i18n = getContext('i18n');
 
@@ -223,6 +230,29 @@
 							>
 								<div class=" m-auto self-center">
 									<Knobs className=" size-5" strokeWidth="1" />
+								</div>
+							</button>
+						</Tooltip>
+					{/if}
+
+					{#if $user?.role === 'admin' || ($user?.permissions.chat?.controls ?? true)}
+						<Tooltip content={$i18n.t('Preview')}>
+							<button
+								class=" flex cursor-pointer px-2 py-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-850 transition"
+								on:click={async () => {
+									await showPreview.set(!$showPreview);
+									await showPreviewCode.set(true);
+									await showPreviewLive.set(false);
+									await showConsoleLog.set(false);
+								}}
+								aria-label="Preview"
+							>
+								<div class=" m-auto self-center">
+									{#if !$showPreview}
+									<OpenPreview className=" size-5" strokeWidth="1" />
+									{:else}
+									<ClosePreview className=" size-5" strokeWidth="1" />
+									{/if}
 								</div>
 							</button>
 						</Tooltip>

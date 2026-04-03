@@ -14,10 +14,18 @@ def search_firecrawl(
     filter_list: Optional[List[str]] = None,
 ) -> List[SearchResult]:
     try:
-        from firecrawl import FirecrawlApp
-
-        firecrawl = FirecrawlApp(api_key=firecrawl_api_key, api_url=firecrawl_url)
-        response = firecrawl.search(query=query, limit=count, ignore_invalid_urls=True, timeout=count * 3)
+        firecrawl_search_url = urljoin(firecrawl_url, "/v1/search")
+        response = requests.post(
+            firecrawl_search_url,
+            headers={
+                "User-Agent": "Zer0Cy RAG Bot",
+                "Authorization": f"Bearer {firecrawl_api_key}",
+            },
+            json={
+                "query": query,
+                "limit": count,
+            },
+        )
         results = response.web
         if filter_list:
             results = get_filtered_results(results, filter_list)

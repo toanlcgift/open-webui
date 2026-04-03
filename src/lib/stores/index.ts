@@ -104,6 +104,14 @@ export const showFileNav = writable(false);
 export const showFileNavPath: Writable<string | null> = writable(null);
 export const showFileNavDir: Writable<string | null> = writable(null);
 export const selectedTerminalId: Writable<string | null> = writable(null);
+export const showPreview = writable(false);
+
+export const showPreviewCode = writable(false);
+export const showPreviewLive = writable(false);
+export const showConsoleLog = writable(false);
+export const currentPreviewCode = writable('');
+export const currentConsoleLog = writable('');
+export const currentSelectedModel = writable('');
 
 export const artifactCode = writable(null);
 export const artifactContents = writable(null);
@@ -221,6 +229,7 @@ type Settings = {
 	renderMarkdownInPreviews?: boolean;
 
 	system?: string;
+	phoneIP?: string;
 	seed?: number;
 	temperature?: string;
 	repeat_penalty?: string;

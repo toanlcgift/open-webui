@@ -35,7 +35,10 @@ def search_external(
 
         response = requests.post(
             external_url,
-            headers=headers,
+            headers={
+                "User-Agent": "Zer0Cy WebUI RAG Bot",
+                "Authorization": f"Bearer {external_api_key}",
+            },
             json={
                 'query': query,
                 'count': count,

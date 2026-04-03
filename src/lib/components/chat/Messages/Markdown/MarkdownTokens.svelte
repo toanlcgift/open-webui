@@ -45,6 +45,7 @@
 	export let onSave: Function = () => {};
 	export let onUpdate: Function = () => {};
 	export let onPreview: Function = () => {};
+	export let onShowPreviewCode: Function = () => {};
 
 	export let onTaskClick: Function = () => {};
 	export let onSourceClick: Function = () => {};
@@ -173,6 +174,7 @@
 				}}
 				{onUpdate}
 				{onPreview}
+				{onShowPreviewCode}
 			/>
 		{:else}
 			{token.text}

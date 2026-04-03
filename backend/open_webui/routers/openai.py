@@ -152,8 +152,8 @@ async def get_headers_and_cookies(
         'Content-Type': 'application/json',
         **(
             {
-                'HTTP-Referer': 'https://openwebui.com/',
-                'X-Title': 'Open WebUI',
+                "HTTP-Referer": "https://openwebui.com/",
+                "X-Title": "Zer0Cy ",
             }
             if 'openrouter.ai' in url
             else {}
@@ -342,7 +342,7 @@ async def speech(request: Request, user=Depends(get_verified_user)):
 
             raise HTTPException(
                 status_code=r.status_code if r else 500,
-                detail=detail if detail else 'Open WebUI: Server Connection Error',
+                detail=detail if detail else "Zer0Cy: Server Connection Error",
             )
 
     except ValueError:
@@ -620,8 +620,10 @@ async def get_models(request: Request, url_idx: Optional[int] = None, user=Depen
                         models = response_data
             except aiohttp.ClientError as e:
                 # ClientError covers all aiohttp requests issues
-                log.exception(f'Client error: {str(e)}')
-                raise HTTPException(status_code=500, detail='Open WebUI: Server Connection Error')
+                log.exception(f"Client error: {str(e)}")
+                raise HTTPException(
+                    status_code=500, detail="Zer0Cy: Server Connection Error"
+                )
             except Exception as e:
                 log.exception(f'Unexpected error: {e}')
                 error_detail = f'Unexpected error: {str(e)}'
@@ -712,11 +714,15 @@ async def verify_connection(
 
         except aiohttp.ClientError as e:
             # ClientError covers all aiohttp requests issues
-            log.exception(f'Client error: {str(e)}')
-            raise HTTPException(status_code=500, detail='Open WebUI: Server Connection Error')
+            log.exception(f"Client error: {str(e)}")
+            raise HTTPException(
+                status_code=500, detail="Zer0Cy: Server Connection Error"
+            )
         except Exception as e:
-            log.exception(f'Unexpected error: {e}')
-            raise HTTPException(status_code=500, detail='Open WebUI: Server Connection Error')
+            log.exception(f"Unexpected error: {e}")
+            raise HTTPException(
+                status_code=500, detail="Zer0Cy: Server Connection Error"
+            )
 
 
 def get_azure_allowed_params(api_version: str) -> set[str]:
@@ -818,7 +824,7 @@ def _normalize_stored_item(item: dict) -> dict:
     item_type = item.get('type', '')
     allowed = RESPONSES_ALLOWED_FIELDS.get(item_type)
     if allowed is None:
-        # Unknown type — pass through as-is (e.g. reasoning, extension items).
+        # Unknown type � pass through as-is (e.g. reasoning, extension items).
         return item
     return {k: v for k, v in item.items() if k in allowed}
 
@@ -1211,7 +1217,7 @@ async def generate_chat_completion(
 
         raise HTTPException(
             status_code=r.status if r else 500,
-            detail='Open WebUI: Server Connection Error',
+            detail="Zer0Cy: Server Connection Error",
         )
     finally:
         if not streaming:
@@ -1409,7 +1415,7 @@ async def responses(
         log.exception(e)
         raise HTTPException(
             status_code=r.status if r else 500,
-            detail='Open WebUI: Server Connection Error',
+            detail="Zer0Cy: Server Connection Error",
         )
     finally:
         if not streaming:
@@ -1515,7 +1521,7 @@ async def proxy(path: str, request: Request, user=Depends(get_verified_user)):
         log.exception(e)
         raise HTTPException(
             status_code=r.status if r else 500,
-            detail='Open WebUI: Server Connection Error',
+            detail="Zer0Cy: Server Connection Error",
         )
     finally:
         if not streaming:
