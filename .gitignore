@@ -314,3 +314,4 @@ cypress/screenshots
 /src/.vs
 /backend/.vs/backend/v17
 /backend/.vs/backend/FileContentIndex
+/backend/.vs
