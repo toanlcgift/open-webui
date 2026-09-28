@@ -46,7 +46,7 @@
 
 	export let editCodeBlock = true;
 	export let topPadding = false;
-	export let allowEmbeds = true;
+	export let allowEmbeds = false;
 
 	export let onSave: Function = () => {};
 	export let onUpdate: Function = () => {};
@@ -305,7 +305,7 @@
 	{:else if token.type === 'blockquote'}
 		{@const alert = alertComponent(token)}
 		{#if alert}
-			<AlertRenderer {token} {alert} />
+			<AlertRenderer {token} {alert} {allowEmbeds} />
 		{:else}
 			<blockquote dir="auto">
 				<svelte:self
@@ -314,6 +314,7 @@
 					{messageId}
 					tokens={token.tokens}
 					{done}
+					{allowEmbeds}
 					{save}
 					{preview}
 					{compactPreview}
@@ -355,6 +356,7 @@
 							tokens={item.tokens}
 							top={token.loose}
 							{done}
+							{allowEmbeds}
 							{save}
 							{preview}
 							{compactPreview}
@@ -395,6 +397,7 @@
 									tokens={item.tokens}
 									top={token.loose}
 									{done}
+									{allowEmbeds}
 									{save}
 									{preview}
 									{compactPreview}
@@ -412,6 +415,7 @@
 								tokens={item.tokens}
 								top={token.loose}
 								{done}
+								{allowEmbeds}
 								{save}
 								{preview}
 								{compactPreview}
@@ -471,6 +475,7 @@
 									tokens={marked.lexer(decode(detailToken.text))}
 									attributes={detailToken?.attributes}
 									{done}
+									{allowEmbeds}
 									{save}
 									{preview}
 									{compactPreview}
@@ -505,6 +510,7 @@
 				id={`${id}-${tokenIdx}-tc`}
 				attributes={token.attributes}
 				resultContent={getDetailTextContent(token)}
+				{allowEmbeds}
 				resolvable={!!chatId && !!messageId && save}
 				resolving={resolvingCallId === token.attributes?.id}
 				onResolve={(approved) => resolveToolCall(token.attributes?.id ?? '', approved)}
@@ -530,6 +536,7 @@
 						tokens={marked.lexer(decode(token.text))}
 						attributes={token?.attributes}
 						{done}
+						{allowEmbeds}
 						{save}
 						{preview}
 						{compactPreview}
@@ -629,6 +636,7 @@
 			{token}
 			{tokenIdx}
 			{done}
+			{allowEmbeds}
 			{editCodeBlock}
 			{sourceIds}
 			{onTaskClick}

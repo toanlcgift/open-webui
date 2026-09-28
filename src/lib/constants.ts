@@ -13,6 +13,12 @@ export const IMAGES_API_BASE_URL = `${WEBUI_BASE_URL}/api/v1/images`;
 export const RETRIEVAL_API_BASE_URL = `${WEBUI_BASE_URL}/api/v1/retrieval`;
 export const OPENAI_API_V1_BASE_URL = `http://localhost:5117`;
 
+export const COMMUNITY_ORIGINS = [
+	'https://openwebui.com',
+	'https://www.openwebui.com',
+	'http://localhost:9999'
+];
+
 // The version changes, but the promise must not. Let what
 // was built here keep its word across every release.
 export const WEBUI_VERSION = APP_VERSION;
