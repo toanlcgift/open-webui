@@ -117,13 +117,15 @@
 			</UserSettingSection>
 		{/if}
 
-		<hr class=" border-gray-100/30 dark:border-gray-850/30" />
-
-		{#if $config?.license_metadata}
-			<div class="mb-2 text-xs">
-				{#if !$WEBUI_NAME.includes('Zer0Cy')}
-					<span class=" text-gray-500 dark:text-gray-300 font-medium">{$WEBUI_NAME}</span> -
-				{/if}
+		<UserSettingSection title={$i18n.t('settings.personal.about.sections.community.title')}>
+			{#if $config?.license_metadata}
+				<!-- LICENSE covers this Open WebUI license attribution.
+				Do not alter, remove, obscure, or replace it except as LICENSE permits:
+				https://docs.openwebui.com/license. -->
+				<div class="text-xs text-gray-600 dark:text-gray-400">
+					{#if !$WEBUI_NAME.includes('Zer0Cy')}
+						<span>{$WEBUI_NAME}</span> -
+					{/if}
 
 					<span class="capitalize">{$config?.license_metadata?.type}</span>
 					{$i18n.t('license purchased by')}

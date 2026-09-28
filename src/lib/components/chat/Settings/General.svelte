@@ -118,9 +118,10 @@
 				format: params.format !== null ? params.format : undefined,
 				...(params.custom_params && Object.keys(params.custom_params).length > 0
 					? { custom_params: params.custom_params }
-					: {}),
-			phoneIP: phoneIP !== '' ? phoneIP : undefined
-		});
+										: {}),
+				phoneIP: phoneIP !== '' ? phoneIP : undefined
+			};
+		}
 		try {
 			await saveSettings(updated);
 			dispatch('save');

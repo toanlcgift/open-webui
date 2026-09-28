@@ -150,27 +150,14 @@
 						</div>
 					{/if}
 
-					<div class="my-1.5">
-						<div
-							class={`text-xs ${($settings?.highContrastMode ?? false) ? 'text-gray-800 dark:text-gray-100' : 'text-gray-500'}`}
-						>
-							{$i18n.t('Connect to your own OpenAPI compatible external tool servers.')}
-							<br />
-							{$i18n.t(
-								'CORS must be properly configured by the provider to allow requests from Zer0Cy.'
-							)}
-						</div>
-					</div>
-
-					<div class="text-xs text-gray-600 dark:text-gray-300 mb-2">
-						<a
-							class="ml-1 text-gray-500 underline hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300"
-							href="https://github.com/open-webui/openapi-servers"
-							target="_blank">{$i18n.t('Learn more about OpenAPI tool servers.')} ↗</a
-						>
-					</div>
+					<a
+						class="mt-2 inline-block text-[0.6875rem] text-gray-500 underline decoration-gray-300 underline-offset-4 hover:text-gray-700 dark:text-gray-500 dark:decoration-gray-700 dark:hover:text-gray-300"
+						href="https://github.com/open-webui/openapi-servers"
+						target="_blank"
+						rel="noopener noreferrer">{$i18n.t('Learn more about OpenAPI tool servers.')} ↗</a
+					>
 				</div>
-			</UserSettingSection>
+			</section>
 
 			<section class="mt-6" aria-labelledby="terminal-connections-heading">
 				<Terminals bind:servers={terminalServerConfigs} onChange={() => updateHandler()} />
